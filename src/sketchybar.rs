@@ -142,7 +142,8 @@ mod tests {
 	#[test]
 	fn test_sketchybar_rs_behavior() -> Result<(),> {
 		let query = message("--query bar", None,)?;
-		assert!(query.is_empty());
+		println!("{query}");
+		assert!(!query.is_empty());
 		Ok((),)
 	}
 }

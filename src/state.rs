@@ -63,6 +63,8 @@ impl DaemonState {
 		let windows_data = crate::helpers::yabai::query_windows().await?;
 		let mut windows = self.windows.write().await;
 
+		eprintln!("reached here");
+
 		let mut changed = false;
 		let old_count = windows.len();
 

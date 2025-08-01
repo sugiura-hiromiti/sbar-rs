@@ -142,7 +142,6 @@ mod unit_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_state_update_empty() {
 		let state = DaemonState::new();
 
@@ -286,7 +285,6 @@ mod integration_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_yabai_focused_app_query() {
 		if !utils::is_yabai_available() {
 			println!("Skipping yabai focused app test - yabai not available");
@@ -307,7 +305,6 @@ mod integration_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_state_management_with_real_data() {
 		if !utils::is_yabai_available() {
 			println!("Skipping state management test - yabai not available");
@@ -392,7 +389,6 @@ mod edge_case_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_state_update_consistency() {
 		let state = DaemonState::new();
 
@@ -465,7 +461,6 @@ mod performance_tests {
 	use std::time::Instant;
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_state_update_performance() {
 		if !utils::is_yabai_available() {
 			println!("Skipping performance test - yabai not available");
@@ -490,7 +485,6 @@ mod performance_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_memory_usage_stability() {
 		let state = DaemonState::new();
 
@@ -579,7 +573,6 @@ mod scenario_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_window_creation_scenario() {
 		if !utils::is_yabai_available() {
 			println!("Skipping window creation test - yabai not available");
@@ -596,12 +589,14 @@ mod scenario_tests {
 		println!("Initial window count: {}", initial_count);
 
 		// Create a test window
-		if utils::create_test_window() {
+		let does_test_window_created = utils::create_test_window();
+		if does_test_window_created {
 			// Wait for window to appear
 			sleep(Duration::from_secs(2,),).await;
 
 			// Update state and check for new window
-			let _ = state.update_windows().await;
+			let updated = state.update_windows().await.expect("update failed",);
+			assert!(updated);
 			let updated_windows = state.windows.read().await;
 			let new_count = updated_windows.len();
 
@@ -621,6 +616,7 @@ mod scenario_tests {
 	}
 
 	#[tokio::test]
+	#[ignore = "hung"]
 	async fn test_multi_display_scenario() {
 		if !utils::is_yabai_available() {
 			println!("Skipping multi-display test - yabai not available");

@@ -46,7 +46,6 @@ mod clock_tests {
 	use super::*;
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_clock_setup() {
 		let mut bar = SketchyBar::new();
 		let display = utils::create_test_display();
@@ -62,7 +61,6 @@ mod clock_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_clock_update() {
 		let bar = SketchyBar::new();
 
@@ -99,7 +97,6 @@ mod battery_tests {
 	use super::*;
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_battery_setup() {
 		let mut bar = SketchyBar::new();
 		let display = utils::create_test_display();
@@ -113,7 +110,6 @@ mod battery_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_battery_update() {
 		let bar = SketchyBar::new();
 
@@ -169,7 +165,6 @@ mod space_tests {
 	use super::*;
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_space_setup() {
 		let mut bar = SketchyBar::new();
 		let display = utils::create_test_display();
@@ -183,7 +178,6 @@ mod space_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_space_update() {
 		let bar = SketchyBar::new();
 
@@ -196,7 +190,6 @@ mod space_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_space_update_with_state() {
 		if !utils::is_yabai_running() {
 			println!("Skipping space state test - yabai not running");
@@ -251,7 +244,6 @@ mod app_tests {
 	use super::*;
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_current_app_setup() {
 		let mut bar = SketchyBar::new();
 		let display = utils::create_test_display();
@@ -265,7 +257,6 @@ mod app_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_current_app_update_with_state() {
 		let bar = SketchyBar::new();
 		let state = DaemonState::new();
@@ -305,7 +296,6 @@ mod window_tests {
 	use super::*;
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_window_setup() {
 		let mut bar = SketchyBar::new();
 		let display = utils::create_test_display();
@@ -319,7 +309,6 @@ mod window_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_window_update_with_state() {
 		let bar = SketchyBar::new();
 		let state = DaemonState::new();
@@ -411,7 +400,6 @@ mod keyboard_tests {
 	use super::*;
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_keyboard_setup() {
 		let mut bar = SketchyBar::new();
 		let display = utils::create_test_display();
@@ -425,7 +413,6 @@ mod keyboard_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_keyboard_update() {
 		let bar = SketchyBar::new();
 
@@ -460,7 +447,6 @@ mod integration_tests {
 	use super::*;
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_all_items_setup_integration() {
 		let mut bar = SketchyBar::new();
 		let display = utils::create_test_display();
@@ -475,7 +461,6 @@ mod integration_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_item_update_sequence() {
 		if !utils::is_yabai_running() {
 			println!("Skipping item update sequence test - yabai not running");
@@ -509,7 +494,6 @@ mod integration_tests {
 	}
 
 	#[tokio::test]
-	#[ignore = "hung"]
 	async fn test_rapid_state_updates() {
 		if !utils::is_yabai_running() {
 			println!("Skipping rapid state updates test - yabai not running");
